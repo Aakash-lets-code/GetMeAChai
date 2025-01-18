@@ -9,7 +9,7 @@ const Login = () => {
     const { data: session } = useSession()
 
     if (session) {
-        const router = useRouter()
+        const router = useRouter()// there was error in this line or related to it need to find it
         router.push('/dashboard')
     }
 
