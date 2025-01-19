@@ -1,15 +1,15 @@
 "use client"
 import React from 'react'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { useSession, signIn, signOut } from "next-auth/react"
 
 
 const Login = () => {
 
     const { data: session } = useSession()
+    const router = useRouter()
 
     if (session) {
-        const router = useRouter()// there was error in this line or related to it need to find it
         router.push('/dashboard')
     }
 
