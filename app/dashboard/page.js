@@ -13,7 +13,7 @@ const page = () => {
       }
   
   return (
-    <div>page</div>
+    <div className='min-h-[84vh]' >page</div>
   )
 }
 
