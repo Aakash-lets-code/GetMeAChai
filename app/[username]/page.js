@@ -7,7 +7,7 @@ const Username = ({ params }) => {
       <div className='cover w-full relative'>
         <img className='w-full h-[350] object-cover' src="https://c10.patreonusercontent.com/4/patreon-media/p/campaign/4842667/452146dcfeb04f38853368f554aadde1/eyJ3IjoxOTIwLCJ3ZSI6MX0%3D/17.gif?token-time=1738627200&token-hash=9ELNdGxKi3Cy06RYQQPuTwrVfYJgf_TBjThU5A7wrSM%3D" alt="cover" />
         <div className='absolute -bottom-14 right-[703] border-white border-2 rounded-full'>
-          <img className='rounded-full' width={100} height={100} src="/porfile.jpg" alt="profile" />
+          <img className='rounded-full' width={100} height={100} src="/profile.jpg" alt="profile" />
         </div>
       </div>
 
