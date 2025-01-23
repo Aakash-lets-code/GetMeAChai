@@ -35,21 +35,21 @@ const Username = ({ params }) => {
           <h2 className=' text-2xl font-bold my-5 '>Supporters</h2>
           <ul className=' mx-4 text-lg'>
             <li className=' flex text-center py-1 px-2 gap-1'>
-              <div className='text-center'><img className=' invert w-7' src="/avatar.gif" alt="avatar" /></div>
+              <div className='text-center'><img className=' invert w-7' src="/avatar.svg" alt="avatar" /></div>
               <div >
                 Shubham donated <b>$30</b> with a Message
                 <span> "I support you brother"</span>
               </div>
             </li>
             <li className=' flex text-center py-1 px-2 gap-1'>
-              <div className='text-center'><img className=' invert w-7' src="/avatar.gif" alt="avatar" /></div>
+              <div className='text-center'><img className=' invert w-7' src="/avatar.svg" alt="avatar" /></div>
               <div >
                 Shubham donated <b>$30</b> with a Message
                 <span> "I support you brother"</span>
               </div>
             </li>
             <li className=' flex text-center py-1 px-2 gap-1'>
-              <div className='text-center'><img className=' invert w-7' src="/avatar.gif" alt="avatar" /></div>
+              <div className='text-center'><img className=' invert w-7' src="/avatar.svg" alt="avatar" /></div>
               <div >
                 Shubham donated <b>$30</b> with a Message
                 <span> "I support you brother"</span>
