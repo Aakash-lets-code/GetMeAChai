@@ -35,6 +35,7 @@ export const authOption = NextAuth({
       if (account.provider == "github") {
         //connect to the database
         const client = await mongoose.connect()
+        // check if the user already exists in the databaseconst userExists = await User.findOne({ githubId: user.id })
       }
     }
   }
