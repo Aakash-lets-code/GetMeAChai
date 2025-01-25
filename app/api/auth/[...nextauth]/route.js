@@ -5,12 +5,12 @@ import NextAuth from 'next-auth'
 // import EmailProvider from 'next-auth/providers/email'
 import GithubProvider from "next-auth/providers/github";
 
-export  const authOption =  NextAuth({
+export const authOption = NextAuth({
   providers: [
     GithubProvider({
-        clientId: process.env.GITHUB_ID,
-        clientSecret: process.env.GITHUB_SECRET,
-      }),
+      clientId: process.env.GITHUB_ID,
+      clientSecret: process.env.GITHUB_SECRET,
+    }),
     // // OAuth authentication providers...
     // AppleProvider({
     //   clientId: process.env.APPLE_ID,
@@ -29,7 +29,15 @@ export  const authOption =  NextAuth({
     //   server: process.env.MAIL_SERVER,
     //   from: 'NextAuth.js <no-reply@example.com>'
     // }),
-  ]
+  ],
+  callbacks: {
+    async signIn({ user, account, profile, email, credentials }) {
+      if (account.provider == "github") {
+        //connect to the database
+        const client = await mongoose.connect()
+      }
+    }
+  }
 })
 
-export {authOption as GET, authOption as POST}
+export { authOption as GET, authOption as POST }
