@@ -4,6 +4,9 @@ import NextAuth from 'next-auth'
 // import GoogleProvider from 'next-auth/providers/google'
 // import EmailProvider from 'next-auth/providers/email'
 import GithubProvider from "next-auth/providers/github";
+import mongoose from "mongoose"
+import User from '@/models/User';
+import Payment from '@/models/Payment';
 
 export const authOption = NextAuth({
   providers: [
@@ -36,9 +39,18 @@ export const authOption = NextAuth({
         //connect to the database
         const client = await mongoose.connect()
         // check if the user already exists in the databaseconst userExists = await User.findOne({ githubId: user.id })
+        const currentUser = User.findone({ email: email })
+        if (!currentUser) {
+          // if the user doesn't exist, create a new user
+          const newUser = new User({
+            email: email,
+            username: email.split("@")[0]
+          })
+          await newUser.save()
+        }
       }
     }
   }
-})
+});
 
 export { authOption as GET, authOption as POST }
