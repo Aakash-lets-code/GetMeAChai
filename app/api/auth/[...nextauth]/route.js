@@ -37,7 +37,7 @@ export const authOption = NextAuth({
     async signIn({ user, account, profile, email, credentials }) {
       if (account.provider == "github") {
         //connect to the database
-        const client = await mongoose.connect()
+        const client = await mongoose.connect("mongodb://localhost:27017/chai")
         // check if the user already exists in the databaseconst userExists = await User.findOne({ githubId: user.id })
         const currentUser = User.findone({ email: email })
         if (!currentUser) {
@@ -47,6 +47,10 @@ export const authOption = NextAuth({
             username: email.split("@")[0]
           })
           await newUser.save()
+          user.name = newUser.username
+        }
+        else{
+          user.name = currentUser.username
         }
       }
     }
