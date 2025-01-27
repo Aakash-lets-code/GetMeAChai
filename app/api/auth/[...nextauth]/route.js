@@ -7,6 +7,8 @@ import GithubProvider from "next-auth/providers/github";
 import mongoose from "mongoose"
 import User from '@/models/User';
 import Payment from '@/models/Payment';
+import connectDB from '@/db/connectDb';
+
 
 export const authOption = NextAuth({
   providers: [
@@ -36,24 +38,26 @@ export const authOption = NextAuth({
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
       if (account.provider == "github") {
-        //connect to the database
+
         const client = await mongoose.connect("mongodb://localhost:27017/chai")
         // check if the user already exists in the databaseconst userExists = await User.findOne({ githubId: user.id })
-        const currentUser = User.findone({ email: email })
+        const currentUser = await User.findone({ email: email })
         if (!currentUser) {
           // if the user doesn't exist, create a new user
           const newUser = new User({
             email: email,
             username: email.split("@")[0]
           })
-          await newUser.save()
-          user.name = newUser.username
         }
-        else{
-          user.name = currentUser.username
-        }
-      }
-    }
+        return true
+      }     
+    },
+    async session({session, user, token}) {
+      const dbUser = await User.findOne({email: session.user.email})
+      console.log(dbUser)
+      session.user.name = dbUser.username
+      return session
+    },
   }
 });
 
