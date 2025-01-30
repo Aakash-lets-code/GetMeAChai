@@ -8,17 +8,19 @@ const paymentPage = (username) => {
     const pay = (amount, orderID) => {
         var options = {
             "key": "YOUR_KEY_ID", // Enter the Key ID generated from the Dashboard
-            "amount": "50000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+            // "key": process.env.KEY_ID, // Enter the Key ID generated from the Dashboard
+            "amount": amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
             "currency": "INR",
-            "name": "Acme Corp", //your business name
+            "name": "Get Me A Chai", //your business name
             "description": "Test Transaction",
             "image": "https://example.com/your_logo",
-            "order_id": "order_9A33XWu170gUtm", //This is a sample Order ID. Pass the id obtained in the response of Step 1
+            "order_id": orderID, //This is a sample Order ID. Pass the id obtained in the response of Step 1
             "handler": function (response) {
                 alert(response.razorpay_payment_id);
                 alert(response.razorpay_order_id);
                 alert(response.razorpay_signature)
             },
+            "callback_url": `${process.env.URL}/api/razorpay`,
             "prefill": { //We recommend using the prefill parameter to auto-fill customer's contact information, especially their phone number
                 "name": "Gaurav Kumar", //your customer's name
                 "email": "gaurav.kumar@example.com",
@@ -31,12 +33,16 @@ const paymentPage = (username) => {
                 "color": "#3399cc"
             }
         }
+
+        var rzp1 = new Razorpay(options);
+        rzp1.open();
+
     }
 
     return (
         <>
             <Script src="https://checkout.razorpay.com/v1/checkout.js"></Script>
-            
+
 
 
             <div className='cover w-full relative'>
@@ -106,9 +112,9 @@ const paymentPage = (username) => {
 
                     {/* or choose form these amount */}
                     <div className="flex mt-5 gap-2">
-                        <button className='border-none bg-slate-800 p-3 rounded-lg'>Pay $10</button>
-                        <button className='border-none bg-slate-800 p-3 rounded-lg'>Pay $20</button>
-                        <button className='border-none bg-slate-800 p-3 rounded-lg'>Pay $30</button>
+                        <button className='border-none bg-slate-800 p-3 rounded-lg'>Pay ₹10</button>
+                        <button className='border-none bg-slate-800 p-3 rounded-lg'>Pay ₹20</button>
+                        <button className='border-none bg-slate-800 p-3 rounded-lg'>Pay ₹30</button>
                     </div>
 
                 </div>
