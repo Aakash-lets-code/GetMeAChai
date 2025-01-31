@@ -2,12 +2,17 @@
 import React, { useState } from 'react'
 import Script from 'next/script'
 import { initiate } from '@/action/useractions'
+import { useSession } from 'next-auth/react'
 
 const paymentPage = (username) => {
     
-    const [paymentform, setPaymentform] = useState({second})
+    const [paymentform, setPaymentform] = useState({ })
+
+    const handleChange = (e) =>{
+        setPaymentform({...paymentform, [e.target.name]: e.target.value})
+    }
     
-    const pay = async (amount, orderID) => {
+    const pay = async (amount) => {
 
         // get the order id 
         let a = await initiate(amount, session?.user.name, paymentform )
@@ -111,9 +116,9 @@ const paymentPage = (username) => {
                     <h2 className=' text-2xl font-bold my-5 '>Make a Payment</h2>
                     <div className="flex gap-2 flex-col">
                         {/* input for message and name */}
-                        <input type="text" placeholder='Enter Name' className='rounded-lg bg-slate-800 p-3 w-full' />
-                        <input type="text" placeholder='Enter Message' className='rounded-lg bg-slate-800 p-3 w-full' />
-                        <input type="text" placeholder='Enter Amount' className='rounded-lg bg-slate-800 p-3 w-full' />
+                        <input onChange={handleChange} value={paymentform.name} type="text" placeholder='Enter Name' className='rounded-lg bg-slate-800 p-3 w-full' />
+                        <input onChange={handleChange} value={paymentform.message} type="text" placeholder='Enter Message' className='rounded-lg bg-slate-800 p-3 w-full' />
+                        <input onChange={handleChange} value={paymentform.amount} type="text" placeholder='Enter Amount' className='rounded-lg bg-slate-800 p-3 w-full' />
                         <button type="button" className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Pay</button>
                     </div>
 
