@@ -124,9 +124,9 @@ const paymentPage = (username) => {
 
                     {/* or choose form these amount */}
                     <div className="flex mt-5 gap-2">
-                        <button className='border-none bg-slate-800 p-3 rounded-lg' onClick={()=> pay(10)} >Pay ₹10</button>
-                        <button className='border-none bg-slate-800 p-3 rounded-lg' onClick={()=> pay(20)} >Pay ₹20</button>
-                        <button className='border-none bg-slate-800 p-3 rounded-lg' onClick={()=> pay(30)} >Pay ₹30</button>
+                        <button className='border-none bg-slate-800 p-3 rounded-lg' onClick={()=> pay(1000)} >Pay ₹10</button>
+                        <button className='border-none bg-slate-800 p-3 rounded-lg' onClick={()=> pay(2000)} >Pay ₹20</button>
+                        <button className='border-none bg-slate-800 p-3 rounded-lg' onClick={()=> pay(3000)} >Pay ₹30</button>
                     </div>
 
                 </div>
