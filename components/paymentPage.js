@@ -1,11 +1,18 @@
 "use client"
-import React from 'react'
+import React, { useState } from 'react'
 import Script from 'next/script'
+import { initiate } from '@/action/useractions'
 
 const paymentPage = (username) => {
+    
+    const [paymentform, setPaymentform] = useState({second})
+    
+    const pay = async (amount, orderID) => {
 
+        // get the order id 
+        let a = await initiate(amount, session?.user.name, paymentform )
+        let orderID = a.id
 
-    const pay = (amount, orderID) => {
         var options = {
             "key": "YOUR_KEY_ID", // Enter the Key ID generated from the Dashboard
             // "key": process.env.KEY_ID, // Enter the Key ID generated from the Dashboard
@@ -112,9 +119,9 @@ const paymentPage = (username) => {
 
                     {/* or choose form these amount */}
                     <div className="flex mt-5 gap-2">
-                        <button className='border-none bg-slate-800 p-3 rounded-lg'>Pay ₹10</button>
-                        <button className='border-none bg-slate-800 p-3 rounded-lg'>Pay ₹20</button>
-                        <button className='border-none bg-slate-800 p-3 rounded-lg'>Pay ₹30</button>
+                        <button className='border-none bg-slate-800 p-3 rounded-lg' onClick={()=> pay(10)} >Pay ₹10</button>
+                        <button className='border-none bg-slate-800 p-3 rounded-lg' onClick={()=> pay(20)} >Pay ₹20</button>
+                        <button className='border-none bg-slate-800 p-3 rounded-lg' onClick={()=> pay(30)} >Pay ₹30</button>
                     </div>
 
                 </div>
