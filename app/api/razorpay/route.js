@@ -16,5 +16,10 @@ export const POST = async (req) =>{
     }
 
     // verify the payment 
-    let xx = validatePaymentVerification({"order_id": body.razorpay_order_ID, "razorpay_payment_id": body.razorpay_payment_id, "razorpay_signature": body.razorpay_signature})
+    let xx = validatePaymentVerification({"order_id": body.razorpay_order_ID, "razorpay_payment_id": body.razorpay_payment_id, "razorpay_signature": body.razorpay_signature}, process.env.KEY_SECRET)
+
+    if(xx){
+        // update the payment status to paid
+        const updatePayment = await Payment.findOneAndUpdate({oid: body.razorpay_order_ID}, {done: "true"}, {new: true})
+    }
 }
