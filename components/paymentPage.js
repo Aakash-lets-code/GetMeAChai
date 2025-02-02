@@ -8,10 +8,17 @@ const paymentPage = ({username}) => {
     // const {data: session} = useSession()
     
     const [paymentform, setPaymentform] = useState({ })
+    const [currentUser, setCurrentUser] = useState({})
 
     const handleChange = (e) =>{
         setPaymentform({...paymentform, [e.target.name]: e.target.value})
     }
+
+    const getData = async (params) => {
+      let u = await fetchuser(username)
+      setCurrentUser(u)
+    }
+    
     
     const pay = async (amount) => {
 
