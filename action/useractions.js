@@ -8,7 +8,7 @@ import User from "@/models/User"
 export const initiate = async (amount, to_username, paymentform) => {
     await connectDB()
     var instance = new Razorpay({ key_id: 'YOUR_KEY_ID', key_secret: 'YOUR_SECRET' })
-    // var instance = new Razorpay({ key_id: process.env.KEY_ID, key_secret: process.env.KEY_SECERT }) // use this line when you have add the razorpay id and secert 
+    // var instance = new Razorpay({ key_id: process.env.NEXT_PUBLIC_KEY_ID, key_secret: process.env.KEY_SECERT }) // use this line when you have add the razorpay id and secert 
 
     
 

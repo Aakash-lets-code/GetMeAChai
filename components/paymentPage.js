@@ -21,7 +21,7 @@ const paymentPage = ({username}) => {
 
         var options = {
             "key": "YOUR_KEY_ID", // Enter the Key ID generated from the Dashboard
-            // "key": process.env.KEY_ID, // Enter the Key ID generated from the Dashboard
+            // "key": process.env.NEXT_PUBLIC_KEY_ID, // Enter the Key ID generated from the Dashboard
             "amount": amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
             "currency": "INR",
             "name": "Get Me A Chai", //your business name
@@ -33,7 +33,7 @@ const paymentPage = ({username}) => {
                 alert(response.razorpay_order_id);
                 alert(response.razorpay_signature)
             },
-            "callback_url": `${process.env.URL}/api/razorpay`,
+            "callback_url": `${process.env.NEXT_PUBLIC_URL}/api/razorpay`,
             "prefill": { //We recommend using the prefill parameter to auto-fill customer's contact information, especially their phone number
                 "name": "Gaurav Kumar", //your customer's name
                 "email": "gaurav.kumar@example.com",
