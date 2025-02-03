@@ -6,29 +6,30 @@ import { useSession } from 'next-auth/react'
 import { fetchpayments, fetchuser, initiate } from '@/action/useractions'
 
 
-const paymentPage = ({username}) => {
+const paymentPage = ({ username }) => {
     // const {data: session} = useSession()
-    
-    const [paymentform, setPaymentform] = useState({ })
+
+    const [paymentform, setPaymentform] = useState({})
     const [currentUser, setCurrentUser] = useState({})
     const [payments, setPayments] = useState()
 
-    const handleChange = (e) =>{
-        setPaymentform({...paymentform, [e.target.name]: e.target.value})
+    const handleChange = (e) => {
+        setPaymentform({ ...paymentform, [e.target.name]: e.target.value })
     }
 
-    const getData = async (params) => {
-      let u = await fetchuser(username)
-      setCurrentUser(u)
-      let dbpaymetns = await fetchpayments(username)
-      setPayments(dbpaymetns)
+    const getData = async () => {
+        let u = await fetchuser(username)
+        setCurrentUser(u)
+        let dbpayments = await fetchpayments(username)
+        setPayments(dbpayments)
+        console.log(u, dbpayments);
     }
-    
-    
+
+
     const pay = async (amount) => {
 
         // get the order id 
-        let a = await initiate(amount, username, paymentform )
+        let a = await initiate(amount, username, paymentform)
         let orderID = a.id
 
         var options = {
@@ -137,9 +138,9 @@ const paymentPage = ({username}) => {
 
                     {/* or choose form these amount */}
                     <div className="flex mt-5 gap-2">
-                        <button className='border-none bg-slate-800 p-3 rounded-lg' onClick={()=> pay(1000)} >Pay ₹10</button>
-                        <button className='border-none bg-slate-800 p-3 rounded-lg' onClick={()=> pay(2000)} >Pay ₹20</button>
-                        <button className='border-none bg-slate-800 p-3 rounded-lg' onClick={()=> pay(3000)} >Pay ₹30</button>
+                        <button className='border-none bg-slate-800 p-3 rounded-lg' onClick={() => pay(1000)} >Pay ₹10</button>
+                        <button className='border-none bg-slate-800 p-3 rounded-lg' onClick={() => pay(2000)} >Pay ₹20</button>
+                        <button className='border-none bg-slate-800 p-3 rounded-lg' onClick={() => pay(3000)} >Pay ₹30</button>
                     </div>
 
                 </div>
