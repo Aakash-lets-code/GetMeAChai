@@ -101,27 +101,15 @@ const paymentPage = ({ username }) => {
                     {/* Show list of all the supporter as the leader board */}
                     <h2 className=' text-2xl font-bold my-5 '>Supporters</h2>
                     <ul className=' mx-4 text-lg'>
-                        <li className=' flex text-center py-1 px-2 gap-1'>
-                            <div className='text-center'><img className=' invert w-7' src="/avatar.svg" alt="avatar" /></div>
-                            <div >
-                                Shubham donated <b>$30</b> with a Message
-                                <span> "I support you brother"</span>
-                            </div>
-                        </li>
-                        <li className=' flex text-center py-1 px-2 gap-1'>
-                            <div className='text-center'><img className=' invert w-7' src="/avatar.svg" alt="avatar" /></div>
-                            <div >
-                                Shubham donated <b>$30</b> with a Message
-                                <span> "I support you brother"</span>
-                            </div>
-                        </li>
-                        <li className=' flex text-center py-1 px-2 gap-1'>
-                            <div className='text-center'><img className=' invert w-7' src="/avatar.svg" alt="avatar" /></div>
-                            <div >
-                                Shubham donated <b>$30</b> with a Message
-                                <span> "I support you brother"</span>
-                            </div>
-                        </li>
+                        {payments.map((p, i) => {
+                            return <li key={i} className='flex text-center py-1 px-2 gap-1'>
+                                <div className='text-center'><img className=' invert w-7' src="/avatar.svg" alt="avatar" /></div>
+                                <div >
+                                    {p.name} donated <b>${p.amount}</b> with a Message
+                                    <span> "{p.message}"</span>
+                                </div>
+                            </li>
+                        })}
                     </ul>
                 </div>
 
