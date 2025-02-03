@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from 'react'
 import Script from 'next/script'
-import { initiate } from '@/action/useractions'
+import { fetchpayments, initiate } from '@/action/useractions'
 import { useSession } from 'next-auth/react'
 
 const paymentPage = ({username}) => {
@@ -9,6 +9,7 @@ const paymentPage = ({username}) => {
     
     const [paymentform, setPaymentform] = useState({ })
     const [currentUser, setCurrentUser] = useState({})
+    const [payments, setPayments] = useState()
 
     const handleChange = (e) =>{
         setPaymentform({...paymentform, [e.target.name]: e.target.value})
@@ -17,6 +18,8 @@ const paymentPage = ({username}) => {
     const getData = async (params) => {
       let u = await fetchuser(username)
       setCurrentUser(u)
+      let dbpaymetns = await fetchpayments(username)
+      setPayments(dbpaymetns)
     }
     
     
