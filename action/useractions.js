@@ -4,6 +4,7 @@ import Razorpay from "razorpay"
 import Payment from "@/models/Payment"
 import connectDB from "@/db/connectDb"
 import User from "@/models/User"
+import { connect } from "mongoose"
 
 export const initiate = async (amount, to_username, paymentform) => {
     await connectDB()
@@ -30,4 +31,11 @@ export const fetchuser = async (username) =>{
     let u = User.findOne({username: username})
     let user = u.toObject({flattenObjectIds: true})
     return user
+}
+
+export const fetchpayments = async (username) => {
+  await connect()
+  // find all payments sorted by decreasing order amount and flatten object ids
+  let p = await Paument.find({to_user: username}).sort({amount: -1}).lean()
+  return p
 }
