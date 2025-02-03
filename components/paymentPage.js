@@ -3,6 +3,8 @@ import React, { useState } from 'react'
 import Script from 'next/script'
 import { fetchpayments, initiate } from '@/action/useractions'
 import { useSession } from 'next-auth/react'
+import { fetchpayments, fetchuser, initiate } from '@/action/useractions'
+
 
 const paymentPage = ({username}) => {
     // const {data: session} = useSession()
