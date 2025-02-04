@@ -1,6 +1,24 @@
 import React from 'react'
-
+import React, {useEffect, useState} from 'react'
+import { useSession, signIn, signOut } from 'next-auth/react'
+import { useRouter } from 'next/router'
+  
 const Dashboard = () => {
+
+    const {data: session , update} = useSession()
+    const router = useRouter()
+   const [form, setForm] = useState({})
+
+    useEffect(() => {
+      if(!session){
+        router.push('/')
+      }
+    }, [router, session])
+
+    const handleChange = (e) => {
+      setForm({...form, [e.target.name]: e.target.value})
+    }  
+    
     return (
         <form class="max-w-md mx-auto min-h-[84.2vh] relative top-11">
             <div class="relative z-0 w-full mb-5 group">
