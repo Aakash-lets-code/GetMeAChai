@@ -11,7 +11,7 @@ export const initiate = async (amount, to_username, paymentform) => {
     var instance = new Razorpay({ key_id: 'YOUR_KEY_ID', key_secret: 'YOUR_SECRET' })
     // var instance = new Razorpay({ key_id: process.env.NEXT_PUBLIC_KEY_ID, key_secret: process.env.KEY_SECERT }) // use this line when you have add the razorpay id and secert 
 
-    
+
 
     let option = {
         amount: Number.parseInt(amount),
@@ -21,21 +21,36 @@ export const initiate = async (amount, to_username, paymentform) => {
     let x = await instance.orders.create(options)
 
     // create a payment object which shows a pending payment in the database
-    await Payment.create({oid: x.id, amount: amount, to_user: to_username, name: paymentform.name, message: paymentform.message  })
-    
+    await Payment.create({ oid: x.id, amount: amount, to_user: to_username, name: paymentform.name, message: paymentform.message })
+
     return x;
 }
 
-export const fetchuser = async (username) =>{
+export const fetchuser = async (username) => {
     await connectDB()
-    let u = User.findOne({username: username})
-    let user = u.toObject({flattenObjectIds: true})
+    let u = User.findOne({ username: username })
+    let user = u.toObject({ flattenObjectIds: true })
     return user
 }
 
 export const fetchpayments = async (username) => {
-  await connect()
-  // find all payments sorted by decreasing order amount and flatten object ids
-  let p = await Paument.find({to_user: username}).sort({amount: -1}).lean()
-  return p
+    await connect()
+    // find all payments sorted by decreasing order amount and flatten object ids
+    let p = await Paument.find({ to_user: username }).sort({ amount: -1 }).lean()
+    return p
+}
+
+export const updateProfile = async (data, oldusername) => {
+    await connectDB()
+    let ndata = Object.fromEntries(data)
+
+    // if the username is being updated , check if username is available
+    if (oldusername !== ndata) {
+        let u = await User.findOne({ username: oldusername })
+        if (u) {
+            throw new Error('Username is already taken')
+        }
+    }
+
+    await User.updateOne({email: ndata.email}, ndata)
 }
