@@ -11,10 +11,16 @@ const Dashboard = () => {
     const [form, setForm] = useState({})
 
     useEffect(() => {
+        getData()
         if (!session) {
             router.push('/')
         }
     }, [router, session])
+
+    const getData = async () => {
+      let u = await fetchuser(session.user.name)
+    }
+    
 
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value })
