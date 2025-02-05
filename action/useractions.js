@@ -46,7 +46,7 @@ export const updateProfile = async (data, oldusername) => {
 
     // if the username is being updated , check if username is available
     if (oldusername !== ndata) {
-        let u = await User.findOne({ username: oldusername })
+        let u = await User.findOne({ username: ndata.username })
         if (u) {
             throw new Error('Username is already taken')
         }
