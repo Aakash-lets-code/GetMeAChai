@@ -7,9 +7,11 @@ const UserSchema = new Schema({
     username: { type: String, required: true },
     profilepic: { type: String },
     coverpic: { type: String },
+    razorpayID: { type: string },
+    razorpaySecert: { type: string },
     CreatedAt: { type: Date, default: Date.now },
     updatedAT: { type: Date, default: Date.now }
 })
- 
+
 const User = mongoose.models.User || mongoose.model("User", UserSchema);
 export default User;
