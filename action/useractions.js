@@ -8,7 +8,12 @@ import { connect } from "mongoose"
 
 export const initiate = async (amount, to_username, paymentform) => {
     await connectDB()
-    var instance = new Razorpay({ key_id: 'YOUR_KEY_ID', key_secret: 'YOUR_SECRET' })
+
+     // fetch the secert of the user who is getting the payment
+     let user = await User.findOne({username: p.to_user})
+     const secert  = user.razorpaySecert
+
+    var instance = new Razorpay({ key_id: user.razorpayID, key_secret: secert })
     // var instance = new Razorpay({ key_id: process.env.NEXT_PUBLIC_KEY_ID, key_secret: process.env.KEY_SECERT }) // use this line when you have add the razorpay id and secert 
 
 
@@ -18,7 +23,7 @@ export const initiate = async (amount, to_username, paymentform) => {
         currency: "INR",
     }
 
-    let x = await instance.orders.create(options)
+    let x = await instance.orders.create(option)
 
     // create a payment object which shows a pending payment in the database
     await Payment.create({ oid: x.id, amount: amount/100, to_user: to_username, name: paymentform.name, message: paymentform.message })
