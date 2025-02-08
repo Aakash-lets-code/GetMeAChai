@@ -1,11 +1,12 @@
 "use client"
-import React, { useState , useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import Script from 'next/script'
 import { fetchpayments, initiate } from '@/action/useractions'
 import { useSession } from 'next-auth/react'
 import { fetchpayments, fetchuser, initiate } from '@/action/useractions'
-import { ToastContainer, toast , Bounce} from 'react-toastify';
-import { useSearchParams } from 'next/navigation' 
+import { ToastContainer, toast, Bounce } from 'react-toastify';
+import { useSearchParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 
 const paymentPage = ({ username }) => {
@@ -15,27 +16,30 @@ const paymentPage = ({ username }) => {
     const [currentUser, setCurrentUser] = useState({})
     const [payments, setPayments] = useState()
     const searchParams = useSearchParams()
+    const router = useRouter()
 
     useEffect(() => {
         getData()
     }, [])
 
     useEffect(() => {
-      if(searchParams.get("paymentdone") == "true"){
-        toast('Payment has been made', {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: false,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-            transition: Bounce,
+        if (searchParams.get("paymentdone") == "true") {
+            toast('Payment has been made', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
             });
-      }
+            router.push(`/${username}`)
+        }
+
     }, [])
-    
+
 
     const handleChange = (e) => {
         setPaymentform({ ...paymentform, [e.target.name]: e.target.value })
