@@ -107,8 +107,7 @@ const paymentPage = ({ username }) => {
                 pauseOnFocusLoss
                 draggable
                 pauseOnHover
-                theme="light"
-                transition="Bounce"
+                theme="light" 
             />
 
 
