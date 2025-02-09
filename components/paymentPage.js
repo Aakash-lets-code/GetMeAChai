@@ -5,9 +5,7 @@ import { fetchpayments, initiate } from '@/action/useractions'
 import { useSession } from 'next-auth/react'
 import { fetchpayments, fetchuser, initiate } from '@/action/useractions'
 import { ToastContainer, toast, Bounce } from 'react-toastify';
-import { useSearchParams } from 'next/navigation'
-import { useRouter } from 'next/navigation'
-
+import { useSearchParams , useRouter} from 'next/navigation' 
 
 const paymentPage = ({ username }) => {
     // const {data: session} = useSession()
@@ -107,7 +105,7 @@ const paymentPage = ({ username }) => {
                 pauseOnFocusLoss
                 draggable
                 pauseOnHover
-                theme="light" 
+                theme="light"
             />
 
 
@@ -127,11 +125,11 @@ const paymentPage = ({ username }) => {
                 </div>
 
                 <div className='text-slate-600'>
-                    Created animated art for VTT'S
+                    Lets help {username} get a chai!
                 </div>
 
                 <div className='text-slate-600'>
-                    9,719 members . 82 posts . $15,450/release
+                    {payments.lenght} Payments . has raised ${payments.reduce((a, b) => a + b.amount, 0)}
                 </div>
             </div>
 

@@ -3,6 +3,7 @@ import { validatePaymentVerification } from "razorpay/dist/utils/razorpay-utils"
 import Payment from "@/models/Payment";
 import connectDB from "@/db/connectDb";
 import Razorpay from "razorpay";
+import User from "/models/User";
 
 export const POST = async (req) =>{
     await connectDB()
@@ -16,7 +17,7 @@ export const POST = async (req) =>{
     }
 
     // fetch the secert of the user who is getting the payment
-    let user = await user.findOne({username: p.to_user})
+    let user = await User.findOne({username: to_user})
     const secert  = user.razorpaySecert
 
     // verify the payment 
