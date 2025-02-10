@@ -6,6 +6,7 @@ import { useSession } from 'next-auth/react'
 import { fetchpayments, fetchuser, initiate } from '@/action/useractions'
 import { ToastContainer, toast, Bounce } from 'react-toastify';
 import { useSearchParams, useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 const paymentPage = ({ username }) => {
     // const {data: session} = useSession()
