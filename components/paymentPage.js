@@ -10,7 +10,7 @@ import { useSearchParams , useRouter} from 'next/navigation'
 const paymentPage = ({ username }) => {
     // const {data: session} = useSession()
 
-    const [paymentform, setPaymentform] = useState({})
+    const [paymentform, setPaymentform] = useState({name: "" , message: "", amount: ""})
     const [currentUser, setCurrentUser] = useState({})
     const [payments, setPayments] = useState()
     const searchParams = useSearchParams()
