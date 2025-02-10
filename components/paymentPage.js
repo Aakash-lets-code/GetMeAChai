@@ -5,12 +5,12 @@ import { fetchpayments, initiate } from '@/action/useractions'
 import { useSession } from 'next-auth/react'
 import { fetchpayments, fetchuser, initiate } from '@/action/useractions'
 import { ToastContainer, toast, Bounce } from 'react-toastify';
-import { useSearchParams , useRouter} from 'next/navigation' 
+import { useSearchParams, useRouter } from 'next/navigation'
 
 const paymentPage = ({ username }) => {
     // const {data: session} = useSession()
 
-    const [paymentform, setPaymentform] = useState({name: "" , message: "", amount: ""})
+    const [paymentform, setPaymentform] = useState({ name: "", message: "", amount: "" })
     const [currentUser, setCurrentUser] = useState({})
     const [payments, setPayments] = useState()
     const searchParams = useSearchParams()
@@ -164,7 +164,7 @@ const paymentPage = ({ username }) => {
 
                         <input onChange={handleChange} value={paymentform.amount} name='amount' type="text" placeholder='Enter Amount' className='rounded-lg bg-slate-800 p-3 w-full' />
 
-                        <button onClick={() => { pay(Number.parseInt(paymentform.amount) * 100) }} type="button" className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 disabled:bg-slate-600 disabled:from-purple-100" disabled={paymentform.name?.length < 3 || paymentform.message.lenght < 4} >Pay</button>
+                        <button onClick={() => { pay(Number.parseInt(paymentform.amount) * 100) }} type="button" className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 disabled:bg-slate-600 disabled:from-purple-100" disabled={paymentform.name?.length < 3 || paymentform.message?.length < 4 || paymentform.amount?.length < 1} >Pay</button>
                     </div>
 
                     {/* or choose form these amount */}
