@@ -2,6 +2,7 @@ import React from 'react'
 
 const about = () => {
     return (
+        // This about page is generated with github copilot so take a look before using this or make any changes if needed
         <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
             <div className="max-w-md w-full space-y-8">
                 <div>

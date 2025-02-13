@@ -52,6 +52,7 @@ export default function Home() {
             <div className=" text-white container mx-auto py-5">
                 <h2 className="text-center text-3xl font-bold  my-10" >Learn more about us</h2>
                 <div className="flex items-center justify-center">
+            {/* can replace this link of youtube video with yours or any other video  */}
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/E3doEXM3w54?si=OqHOBfiNK0Quj5QR" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
                 </div>
             </div>
