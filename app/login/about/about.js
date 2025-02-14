@@ -47,3 +47,8 @@ const about = () => {
 }
 
 export default about
+
+// Metadata
+export const metadata = {
+    title: "About - Get Me A Chai",
+}

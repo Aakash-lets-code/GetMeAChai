@@ -12,7 +12,7 @@ const Login = () => {
         if (session) {
             router.push('/dashboard')
         }
-    }, [session, router]) 
+    }, [session, router])
 
 
     return (

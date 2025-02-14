@@ -21,3 +21,8 @@ const page = () => {
 }
 
 export default page
+
+// Metadata
+export const metadata = {
+  title: "Dashboard - Get Me A Chai",
+}
