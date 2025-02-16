@@ -112,8 +112,8 @@ const paymentPage = ({ username }) => {
 
 
             <div className='cover w-full relative'>
-                <img className='w-full h-[350] object-cover' src={currentUser.coverpic} alt="cover" />
-                <div className='absolute -bottom-14 right-[703] border-white border-2 rounded-full overflow-hidden size-32'>
+                <img className='w-full h-48 md:h-[350] object-cover' src={currentUser.coverpic} alt="cover" />
+                <div className='absolute -bottom-14 right-[38%] md:right-[703] border-white border-2 rounded-full overflow-hidden size-32 '>
                     <img className='rounded-full object-cover size-32' src={currentUser.profilepic} alt="profile" />
                 </div>
             </div>
@@ -135,9 +135,9 @@ const paymentPage = ({ username }) => {
             </div>
 
 
-            <div className="payment flex w-[80%] gap-3 text-white my-16 mx-auto ">
+            <div className="payment flex w-[80%] gap-3 text-white my-16 mx-auto flex-col md:flex-row ">
 
-                <div className="supporters w-1/2 bg-slate-900 rounded-lg p-6">
+                <div className="supporters w-full md:w-1/2 bg-slate-900 rounded-lg p-6">
                     {/* Show list of all the supporter as the leader board */}
                     <h2 className=' text-2xl font-bold my-5 '>Top 10 Supporters</h2>
                     {payments.length == 0 && <li>No payments yet</li>}
@@ -154,7 +154,7 @@ const paymentPage = ({ username }) => {
                     </ul>
                 </div>
 
-                <div className="makepayment w-1/2 bg-slate-900 rounded-lg p-6">
+                <div className="makepayment w-full md:w-1/2 bg-slate-900 rounded-lg p-6">
 
                     <h2 className=' text-2xl font-bold my-5 '>Make a Payment</h2>
                     <div className="flex gap-2 flex-col">
@@ -169,7 +169,7 @@ const paymentPage = ({ username }) => {
                     </div>
 
                     {/* or choose form these amount */}
-                    <div className="flex mt-5 gap-2">
+                    <div className="flex flex-col md:flex-row mt-5 gap-2">
                         <button className='border-none bg-slate-800 p-3 rounded-lg' onClick={() => pay(1000)} >Pay ₹10</button>
                         <button className='border-none bg-slate-800 p-3 rounded-lg' onClick={() => pay(2000)} >Pay ₹20</button>
                         <button className='border-none bg-slate-800 p-3 rounded-lg' onClick={() => pay(3000)} >Pay ₹30</button>

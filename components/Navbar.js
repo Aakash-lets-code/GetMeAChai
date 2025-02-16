@@ -31,7 +31,7 @@ const Navbar = () => {
                 <li>Login</li>
                 <li>Sign Up</li>
             </ul> */}
-            <div className='relative'>
+            <div className='relative flex flex-col gap-3 md:block'>
                 {session && <><button onBlur={() => {
                     setTimeout(() => {
                         setshowdropdown(false)
