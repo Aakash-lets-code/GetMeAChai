@@ -54,7 +54,7 @@ export default function Home() {
             <div className="bg-red-50 opacity-5 h-1 md:mt-10" > </div>
 
             <div className=" text-white container mx-auto py-5 px-10 flex flex-col items-center justify-center ">
-                <h2 className="text-center text-3xl font-bold  my-10" >Learn more about us</h2>
+                <h2 className="text-center text-3xl font-bold my-4 md:my-10" >Learn more about us</h2>
                 {/* can replace this link of youtube video with yours or any other video  */}
                 <div className="w-[90%] h-[40vh] md:w-[50%] md:h-[40vh] lg:w-[50%] lg:h-[40vh] xl:w-[50%] xl:h-[40vh] " >
                     <iframe className="w-full h-full" src="https://www.youtube.com/embed/E3doEXM3w54?si=OqHOBfiNK0Quj5QR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
