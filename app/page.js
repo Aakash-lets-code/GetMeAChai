@@ -16,7 +16,7 @@ export default function Home() {
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores eaque unde asperiores tempora cumque eveniet tenetur nostrum delectus.
                 </p>
                 <p classname="text-center md:text-left">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas earum dolorum molestiae unde, labore delectus dignissimos sit inventore veniam. Beatae quaerat eaque corporis.
+                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur accusamus placeat repudiandae?
                 </p>
                 <div>
                     <Link href={"/login"}>
