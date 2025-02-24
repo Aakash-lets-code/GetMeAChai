@@ -31,7 +31,7 @@ export default function Home() {
             <div className="bg-red-50 opacity-5 h-1"> </div>
 
             <div className=" text-white container mx-auto py-5 px-5 md:px-10">
-                <h2 className="text-center text-3xl font-bold  my-10" >Your fans can buy you a Chai</h2>
+                <h2 className="text-center text-3xl font-bold  my-4 md:my-10" >Your fans can buy you a Chai</h2>
                 <div className="flex flex-col md:flex-row gap-5 justify-around">
                     <div className="item flex items-center justify-center flex-col space-y-1 md:space-y-3">
                         <img className=" bg-slate-600 rounded-full p-1 " src="/man.png" alt="man" width={80} />
