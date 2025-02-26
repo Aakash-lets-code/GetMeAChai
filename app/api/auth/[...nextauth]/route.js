@@ -50,11 +50,10 @@ export const authOption = NextAuth({
           })
         }
         return true
-      }     
+      }
     },
-    async session({session, user, token}) {
-      const dbUser = await User.findOne({email: session.user.email})
-      console.log(dbUser)
+    async session({ session, user, token }) {
+      const dbUser = await User.findOne({ email: session.user.email })
       session.user.name = dbUser.username
       return session
     },
